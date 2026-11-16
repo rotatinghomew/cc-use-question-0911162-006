@@ -1,0 +1,142 @@
+{
+  "scenario": "跨版本术语映射影响分析",
+  "synthetic": true,
+  "source_version": "vocab-v1",
+  "target_version": "vocab-v2",
+  "mapping_set": {
+    "set_id": "mapping-set-v1-to-v2",
+    "vocabulary_version": "vocab-v2",
+    "description": "治理术语本体 v1 到 v2 的概念映射集合",
+    "mappings": [
+      {
+        "mapping_id": "map-algorithm-transparency",
+        "source_version": "vocab-v1",
+        "source_concept": "algorithm-transparency",
+        "target_version": "vocab-v2",
+        "target_concept": "algorithmic-transparency",
+        "relation": "equivalent",
+        "status": "adopted",
+        "confidence": 0.95,
+        "rationale": "v2 将算法透明度更名为算法可解释透明度，语义等价"
+      },
+      {
+        "mapping_id": "map-data-governance",
+        "source_version": "vocab-v1",
+        "source_concept": "data-governance",
+        "target_version": "vocab-v2",
+        "target_concept": "data-stewardship",
+        "relation": "equivalent",
+        "status": "adopted",
+        "confidence": 0.88,
+        "rationale": "数据治理在 v2 中收敛为数据管家职责"
+      },
+      {
+        "mapping_id": "map-automated-decision",
+        "source_version": "vocab-v1",
+        "source_concept": "automated-decision",
+        "target_version": "vocab-v2",
+        "target_concept": "automated-decision-review",
+        "relation": "related",
+        "status": "adopted",
+        "confidence": 0.42,
+        "rationale": "v2 仅保留自动化决策审查概念，尚无完全等价项"
+      },
+      {
+        "mapping_id": "map-biometric-risk-pending",
+        "source_version": "vocab-v1",
+        "source_concept": "biometric-risk",
+        "target_version": "vocab-v2",
+        "target_concept": "biometric-impact",
+        "relation": "equivalent",
+        "status": "proposed",
+        "confidence": 0.71,
+        "rationale": "等价映射仍在评审，尚未采纳"
+      },
+      {
+        "mapping_id": "map-model-audit",
+        "source_version": "vocab-v1",
+        "source_concept": "model-audit",
+        "target_version": "vocab-v2",
+        "target_concept": "model-assurance",
+        "relation": "equivalent",
+        "status": "adopted",
+        "confidence": 0.9,
+        "rationale": "模型审计在 v2 中扩展为模型保障，核心统计口径保持一致"
+      }
+    ]
+  },
+  "concept_references": {
+    "model-audit": ["algorithm-transparency", "data-governance"],
+    "algorithm-transparency": ["automated-decision"]
+  },
+  "usage_snapshots": [
+    {"vocabulary_version": "vocab-v1", "concept_id": "algorithm-transparency", "usage_count": 120.0, "usage_share": 0.31, "observed_at": "2026-09-30T00:00:00+00:00"},
+    {"vocabulary_version": "vocab-v2", "concept_id": "algorithmic-transparency", "usage_count": 120.0, "usage_share": 0.31, "observed_at": "2026-10-31T00:00:00+00:00"},
+    {"vocabulary_version": "vocab-v1", "concept_id": "data-governance", "usage_count": 86.0, "usage_share": 0.22, "observed_at": "2026-09-30T00:00:00+00:00"},
+    {"vocabulary_version": "vocab-v2", "concept_id": "data-stewardship", "usage_count": 97.0, "usage_share": 0.24, "observed_at": "2026-10-31T00:00:00+00:00"},
+    {"vocabulary_version": "vocab-v1", "concept_id": "automated-decision", "usage_count": 54.0, "usage_share": 0.14, "observed_at": "2026-09-30T00:00:00+00:00"},
+    {"vocabulary_version": "vocab-v2", "concept_id": "automated-decision-review", "usage_count": 30.0, "usage_share": 0.08, "observed_at": "2026-10-31T00:00:00+00:00"},
+    {"vocabulary_version": "vocab-v1", "concept_id": "biometric-risk", "usage_count": 41.0, "usage_share": 0.1, "observed_at": "2026-09-30T00:00:00+00:00"},
+    {"vocabulary_version": "vocab-v1", "concept_id": "model-audit", "usage_count": 73.0, "usage_share": 0.19, "observed_at": "2026-09-30T00:00:00+00:00"},
+    {"vocabulary_version": "vocab-v2", "concept_id": "model-assurance", "usage_count": 73.0, "usage_share": 0.19, "observed_at": "2026-10-31T00:00:00+00:00"}
+  ],
+  "records": [
+    {
+      "record_id": "governance_concept-101",
+      "payload": {
+        "mapping_confidence": 12.0,
+        "definition_count": 13.9,
+        "usage_count": 15.8,
+        "language_code": "language_code-3",
+        "ambiguous_links": 19.6,
+        "cycle_count": 21.5,
+        "adoption_share": 23.4,
+        "concept_id": "algorithm-transparency",
+        "deprecation_age_days": 27.2,
+        "contract_coverage": 0.47,
+        "review_confidence": 0.58,
+        "version_status": "version_status-1"
+      },
+      "state": "proposed",
+      "source": "synthetic-local-impact"
+    },
+    {
+      "record_id": "governance_concept-102",
+      "payload": {
+        "mapping_confidence": 15.7,
+        "definition_count": 17.6,
+        "usage_count": 19.5,
+        "language_code": "language_code-4",
+        "ambiguous_links": 23.3,
+        "cycle_count": 25.2,
+        "adoption_share": 27.1,
+        "concept_id": "data-governance",
+        "deprecation_age_days": 30.9,
+        "contract_coverage": 0.58,
+        "review_confidence": 0.69,
+        "version_status": "version_status-2"
+      },
+      "state": "proposed",
+      "source": "synthetic-local-impact"
+    },
+    {
+      "record_id": "governance_concept-103",
+      "payload": {
+        "mapping_confidence": 19.4,
+        "definition_count": 21.3,
+        "usage_count": 23.2,
+        "language_code": "language_code-0",
+        "ambiguous_links": 27.0,
+        "cycle_count": 28.9,
+        "adoption_share": 30.8,
+        "concept_id": "automated-decision",
+        "deprecation_age_days": 34.6,
+        "contract_coverage": 0.69,
+        "review_confidence": 0.8,
+        "version_status": "version_status-3"
+      },
+      "state": "proposed",
+      "source": "synthetic-local-impact"
+    }
+  ]
+}

@@ -83,6 +83,8 @@ class Repository:
     def initialize(self) -> None:
         with self.connect() as connection:
             connection.executescript(SCHEMA)
+        from governance_vocabulary.impact.persistence import ImpactRepository
+        ImpactRepository(self.connect).initialize()
 
     @contextmanager
     def transaction(self) -> Iterator[sqlite3.Connection]:

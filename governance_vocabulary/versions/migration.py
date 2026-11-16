@@ -10,6 +10,32 @@ from governance_vocabulary.validation.consistency import evaluate
 STATES = ['proposed', 'curated', 'versioned', 'mapped', 'adopted', 'deprecated']
 TRANSITIONS = {state: tuple(STATES[i + 1:i + 3]) for i, state in enumerate(STATES)}
 
+
+def impact_gate(context: Mapping[str, Any]) -> dict[str, Any] | None:
+    """Return the recorded cross-version impact gate, if one is in context."""
+    gate = context.get('impact_gate')
+    if not isinstance(gate, Mapping):
+        return None
+    return dict(gate)
+
+
+def impact_blocks_migration(context: Mapping[str, Any]) -> tuple[bool, tuple[str, ...]]:
+    """Explain whether the impact analysis blocks a migration decision.
+
+    The gate only blocks when the stored analysis reports incomparable
+    statistics. The reason codes are returned verbatim so callers can tell a
+    missing equivalent (no_equivalent / mapping_gap) apart from an adopted
+    mapping that is still pending (unadopted_link) or a genuine data change
+    observed on comparable chains.
+    """
+    gate = impact_gate(context)
+    if gate is None:
+        return False, ()
+    reasons = tuple(str(code) for code in gate.get('blocking_reason_codes', ()))
+    blocked = gate.get('decision') == 'hold' or bool(reasons)
+    return blocked, reasons
+
+
 @dataclass(frozen=True)
 class TransitionPlan:
     from_state: str
@@ -35,6 +61,9 @@ def plan_transition(record: DomainRecord, target: str, context: Mapping[str, Any
     threshold = float(context.get('transition_threshold', 0.42))
     if scorecard['score'] < threshold:
         reasons.append('record score is below the transition threshold')
+    blocked, impact_reasons = impact_blocks_migration(context)
+    if blocked:
+        reasons.append('impact analysis blocks migration: ' + ','.join(impact_reasons))
     return TransitionPlan(record.state, target, structurally_allowed and not reasons, tuple(reasons or ['eligible']), scorecard['score'])
 
 def apply_transition(record: DomainRecord, target: str, context: Mapping[str, Any] | None = None) -> DomainRecord:
@@ -1140,9 +1169,12 @@ def decide(record: DomainRecord, context: Mapping[str, Any] | None = None) -> De
     guards = guard_report(record, context)
     effective_score = scorecard['score'] * 0.65 + float(context.get('domain_signal', 0.5)) * 0.35
     critical = sum(item.severity == 'critical' for item in rules)
+    blocked, impact_reasons = impact_blocks_migration(context)
     if context.get('domain_severity') == 'critical':
         outcome = 'hold'
     elif critical:
+        outcome = 'hold'
+    elif blocked:
         outcome = 'hold'
     elif effective_score >= float(context.get('approve_threshold', 0.62)) and guards['passed'] >= guards['failed']:
         outcome = 'approve'
@@ -1152,6 +1184,8 @@ def decide(record: DomainRecord, context: Mapping[str, Any] | None = None) -> De
         outcome = 'reject'
     reasons = (f"score={effective_score:.6f}", f"critical={critical}",
                f"guards={guards['passed']}/{guards['passed'] + guards['failed']}")
+    if blocked:
+        reasons = reasons + ("impact_block=" + ",".join(impact_reasons),)
     return Decision(record.record_id, outcome, effective_score, reasons, rules, scorecard['metrics'])
 
 def advance_for_outcome(record: DomainRecord, decision: Decision) -> DomainRecord:

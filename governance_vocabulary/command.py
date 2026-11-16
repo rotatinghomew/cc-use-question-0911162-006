@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 from typing import Sequence
 
+from governance_vocabulary.concepts.model import ContractError
 from governance_vocabulary.curation_workbench import Application, run, verify
 
 
@@ -20,17 +21,26 @@ def parser() -> argparse.ArgumentParser:
     check.add_argument("--output", required=True)
     inspect = commands.add_parser("inspect")
     inspect.add_argument("--database", required=True)
+    report = commands.add_parser("verify-report")
+    report.add_argument("--database", required=True)
+    report.add_argument("--analysis-id", required=True)
     return root
 
 
 def main(argv: Sequence[str] | None = None) -> int:
     args = parser().parse_args(argv)
-    if args.command == "run":
-        result = run(args.fixture, args.database, args.output)
-    elif args.command == "verify":
-        result = verify(args.database, args.output)
-    else:
-        result = Application(args.database).inspect()
+    try:
+        if args.command == "run":
+            result = run(args.fixture, args.database, args.output)
+        elif args.command == "verify":
+            result = verify(args.database, args.output)
+        elif args.command == "verify-report":
+            result = Application(args.database).verify_historical_report(args.analysis_id)
+        else:
+            result = Application(args.database).inspect()
+    except ContractError as exc:
+        print(json.dumps({"ok": False, "error": str(exc)}, ensure_ascii=False, sort_keys=True))
+        return 1
     print(json.dumps(result, ensure_ascii=False, sort_keys=True))
     return 0 if result.get("ok", True) else 1
 
