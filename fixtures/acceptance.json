@@ -1,0 +1,158 @@
+{
+  "scenario": "多国人工智能治理术语本体版本迁移库",
+  "synthetic": true,
+  "records": [
+    {
+      "record_id": "governance_concept-001",
+      "payload": {
+        "mapping_confidence": 12.0,
+        "definition_count": 13.9,
+        "usage_count": 15.8,
+        "language_code": "language_code-3",
+        "ambiguous_links": 19.6,
+        "cycle_count": 21.5,
+        "adoption_share": 23.4,
+        "concept_id": "concept_id-2",
+        "deprecation_age_days": 27.2,
+        "contract_coverage": 0.47,
+        "review_confidence": 0.58,
+        "version_status": "version_status-1"
+      },
+      "state": "proposed",
+      "source": "synthetic-local-acceptance"
+    },
+    {
+      "record_id": "governance_concept-002",
+      "payload": {
+        "mapping_confidence": 15.7,
+        "definition_count": 17.6,
+        "usage_count": 19.5,
+        "language_code": "language_code-4",
+        "ambiguous_links": 23.3,
+        "cycle_count": 25.2,
+        "adoption_share": 27.1,
+        "concept_id": "concept_id-3",
+        "deprecation_age_days": 30.9,
+        "contract_coverage": 0.58,
+        "review_confidence": 0.69,
+        "version_status": "version_status-2"
+      },
+      "state": "proposed",
+      "source": "synthetic-local-acceptance"
+    },
+    {
+      "record_id": "governance_concept-003",
+      "payload": {
+        "mapping_confidence": 19.4,
+        "definition_count": 21.3,
+        "usage_count": 23.2,
+        "language_code": "language_code-0",
+        "ambiguous_links": 27.0,
+        "cycle_count": 28.9,
+        "adoption_share": 30.8,
+        "concept_id": "concept_id-4",
+        "deprecation_age_days": 34.6,
+        "contract_coverage": 0.69,
+        "review_confidence": 0.8,
+        "version_status": "version_status-3"
+      },
+      "state": "proposed",
+      "source": "synthetic-local-acceptance"
+    },
+    {
+      "record_id": "governance_concept-004",
+      "payload": {
+        "mapping_confidence": 23.1,
+        "definition_count": 25.0,
+        "usage_count": 26.9,
+        "language_code": "language_code-1",
+        "ambiguous_links": 30.7,
+        "cycle_count": 32.6,
+        "adoption_share": 34.5,
+        "concept_id": "concept_id-0",
+        "deprecation_age_days": 38.3,
+        "contract_coverage": 0.8,
+        "review_confidence": 0.91,
+        "version_status": "version_status-4"
+      },
+      "state": "proposed",
+      "source": "synthetic-local-acceptance"
+    },
+    {
+      "record_id": "governance_concept-005",
+      "payload": {
+        "mapping_confidence": 26.8,
+        "definition_count": 28.7,
+        "usage_count": 30.6,
+        "language_code": "language_code-2",
+        "ambiguous_links": 34.4,
+        "cycle_count": 36.3,
+        "adoption_share": 38.2,
+        "concept_id": "concept_id-1",
+        "deprecation_age_days": 42.0,
+        "contract_coverage": 0.91,
+        "review_confidence": 0.25,
+        "version_status": "version_status-0"
+      },
+      "state": "proposed",
+      "source": "synthetic-local-acceptance"
+    },
+    {
+      "record_id": "governance_concept-006",
+      "payload": {
+        "mapping_confidence": 30.5,
+        "definition_count": 32.4,
+        "usage_count": 34.3,
+        "language_code": "language_code-3",
+        "ambiguous_links": 38.1,
+        "cycle_count": 40.0,
+        "adoption_share": 41.9,
+        "concept_id": "concept_id-2",
+        "deprecation_age_days": 45.7,
+        "contract_coverage": 0.25,
+        "review_confidence": 0.36,
+        "version_status": "version_status-1"
+      },
+      "state": "proposed",
+      "source": "synthetic-local-acceptance"
+    },
+    {
+      "record_id": "governance_concept-007",
+      "payload": {
+        "mapping_confidence": 34.2,
+        "definition_count": 36.1,
+        "usage_count": 38.0,
+        "language_code": "language_code-4",
+        "ambiguous_links": 41.8,
+        "cycle_count": 43.7,
+        "adoption_share": 45.6,
+        "concept_id": "concept_id-3",
+        "deprecation_age_days": 49.4,
+        "contract_coverage": 0.36,
+        "review_confidence": 0.47,
+        "version_status": "version_status-2"
+      },
+      "state": "proposed",
+      "source": "synthetic-local-acceptance"
+    },
+    {
+      "record_id": "governance_concept-008",
+      "payload": {
+        "mapping_confidence": 37.9,
+        "definition_count": 39.8,
+        "usage_count": 41.7,
+        "language_code": "language_code-0",
+        "ambiguous_links": 45.5,
+        "cycle_count": 47.4,
+        "adoption_share": 49.3,
+        "concept_id": "concept_id-4",
+        "deprecation_age_days": 53.1,
+        "contract_coverage": 0.47,
+        "review_confidence": 0.58,
+        "version_status": "version_status-3"
+      },
+      "state": "proposed",
+      "source": "synthetic-local-acceptance"
+    }
+  ]
+}
